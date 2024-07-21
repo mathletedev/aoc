@@ -51,6 +51,7 @@ const PART2: Part = |input| {
             .min_by(|(i, _), (j, _)| i.cmp(j));
 
         if let Some((i, d)) = spelled {
+            // return earlier digit
             if i.unwrap() < numerical.0 {
                 return d.try_into().unwrap();
             }
