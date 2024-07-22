@@ -2,6 +2,17 @@ use std::collections::HashSet;
 
 use crate::solution::{Part, Solution};
 
+const DIRS: [(i32, i32); 8] = [
+    (-1, -1),
+    (-1, 0),
+    (-1, 1),
+    (0, -1),
+    (0, 1),
+    (1, -1),
+    (1, 0),
+    (1, 1),
+];
+
 // walk back to start of number
 fn walk_back(x: i32, schematic: &Vec<Vec<char>>, i: &i32) -> i32 {
     if x > 0 && schematic[*i as usize][x as usize - 1].is_ascii_digit() {
@@ -27,17 +38,6 @@ fn walk_forward(acc: i32, x: i32, schematic: &Vec<Vec<char>>, i: &i32) -> i32 {
     }
 }
 
-const DIRS: [(i32, i32); 8] = [
-    (-1, -1),
-    (-1, 0),
-    (-1, 1),
-    (0, -1),
-    (0, 1),
-    (1, -1),
-    (1, 0),
-    (1, 1),
-];
-
 const PART1: Part = |input| {
     let schematic = input
         .lines()
@@ -62,9 +62,9 @@ const PART1: Part = |input| {
                 && *j >= 0
                 && *i < schematic.len().try_into().unwrap()
                 && *j < schematic[0].len().try_into().unwrap()
+                // only take digits
+                && schematic[*i as usize][*j as usize].is_ascii_digit()
         })
-        // only take digits
-        .filter(|(i, j)| schematic[*i as usize][*j as usize].is_ascii_digit())
         .map(|(i, j)| (i, walk_back(j, &schematic, &i)))
         // filter out duplicates
         .collect::<HashSet<(i32, i32)>>()
@@ -97,8 +97,8 @@ const PART2: Part = |input| {
                         && *j >= 0
                         && *i < schematic.len().try_into().unwrap()
                         && *j < schematic[0].len().try_into().unwrap()
+                        && schematic[*i as usize][*j as usize].is_ascii_digit()
                 })
-                .filter(|(i, j)| schematic[*i as usize][*j as usize].is_ascii_digit())
                 .map(|(i, j)| (i, walk_back(j, &schematic, &i)))
                 .collect::<HashSet<(i32, i32)>>()
         })
