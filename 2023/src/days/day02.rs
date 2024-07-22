@@ -12,7 +12,9 @@ const PART1: Part = |input| {
         .enumerate()
         .filter(|(_, line)| {
             // split data into individual colours
-            let data = line.split(": ").collect::<Vec<&str>>()[1];
+            let data = Itertools::collect_tuple::<(_, &str)>(line.split(": "))
+                .unwrap()
+                .1;
             let data = data.split("; ").collect::<Vec<&str>>();
             let data = data
                 .iter()
@@ -35,7 +37,9 @@ const PART2: Part = |input| {
     input
         .lines()
         .map(|line| {
-            let data = line.split(": ").collect::<Vec<&str>>()[1];
+            let data = Itertools::collect_tuple::<(_, &str)>(line.split(": "))
+                .unwrap()
+                .1;
             let data = data.split("; ").collect::<Vec<&str>>();
             let data = data
                 .iter()
