@@ -37,14 +37,16 @@ fn main() -> Result<()> {
         _ => unimplemented!(),
     };
 
-    let start = Instant::now();
-
-    let ans = match part {
+    let solution = match part {
         1 => solution.part1,
         2 => solution.part2,
         _ => unimplemented!(),
     }
-    .unwrap()(&input);
+    .unwrap();
+
+    let start = Instant::now();
+
+    let ans = solution(&input);
 
     let elapsed = start.elapsed();
 
