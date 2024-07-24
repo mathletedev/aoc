@@ -12,9 +12,7 @@ const PART1: Part = |input| {
         .enumerate()
         .filter(|(_, line)| {
             // split data into individual colours
-            let data = Itertools::collect_tuple::<(_, &str)>(line.split(": "))
-                .unwrap()
-                .1;
+            let data = line.split(": ").collect_tuple::<(_, &str)>().unwrap().1;
             let data = data.split("; ").collect::<Vec<&str>>();
             let data = data
                 .iter()
@@ -22,7 +20,7 @@ const PART1: Part = |input| {
 
             // if any colour exceeds possible amount, return false
             !data.into_iter().any(|d| {
-                let (num, colour) = Itertools::collect_tuple(d.split(' ')).unwrap();
+                let (num, colour) = d.split(' ').collect_tuple().unwrap();
                 let num = num.parse::<u32>().unwrap();
 
                 num > *possible.get(colour).unwrap()
@@ -37,9 +35,7 @@ const PART2: Part = |input| {
     input
         .lines()
         .map(|line| {
-            let data = Itertools::collect_tuple::<(_, &str)>(line.split(": "))
-                .unwrap()
-                .1;
+            let data = line.split(": ").collect_tuple::<(_, &str)>().unwrap().1;
             let data = data.split("; ").collect::<Vec<&str>>();
             let data = data
                 .iter()
@@ -48,7 +44,7 @@ const PART2: Part = |input| {
             let mins = data
                 .into_iter()
                 .map(|d| {
-                    let (num, colour) = Itertools::collect_tuple(d.split(' ')).unwrap();
+                    let (num, colour) = d.split(' ').collect_tuple().unwrap();
                     let num = num.parse::<u32>().unwrap();
 
                     // position colour into tuple

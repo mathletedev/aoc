@@ -6,19 +6,19 @@ const PART1: Part = |input| {
     input
         .lines()
         .map(|line| {
-            let data = Itertools::collect_tuple::<(_, &str)>(line.split(": "))
-                .unwrap()
-                .1;
+            let data = line.split(": ").collect_tuple::<(_, &str)>().unwrap().1;
 
-            let (winning, have) =
-                Itertools::collect_tuple::<(Vec<i32>, Vec<i32>)>(data.split(" | ").map(|d| {
+            let (winning, have) = data
+                .split(" | ")
+                .map(|d| {
                     d.split(' ')
                         .filter_map(|n| match n.parse::<i32>() {
                             Ok(n) => Some(n),
                             Err(_) => None,
                         })
                         .collect::<Vec<i32>>()
-                }))
+                })
+                .collect_tuple::<(Vec<i32>, Vec<i32>)>()
                 .unwrap();
 
             // count number of winning numbers in have
@@ -41,19 +41,19 @@ const PART2: Part = |input| {
     let mut dp = vec![1; NUM_CARDS];
 
     input.lines().enumerate().for_each(|(i, line)| {
-        let data = Itertools::collect_tuple::<(_, &str)>(line.split(": "))
-            .unwrap()
-            .1;
+        let data = line.split(": ").collect_tuple::<(_, &str)>().unwrap().1;
 
-        let (winning, have) =
-            Itertools::collect_tuple::<(Vec<i32>, Vec<i32>)>(data.split(" | ").map(|d| {
+        let (winning, have) = data
+            .split(" | ")
+            .map(|d| {
                 d.split(' ')
                     .filter_map(|n| match n.parse::<i32>() {
                         Ok(n) => Some(n),
                         Err(_) => None,
                     })
                     .collect::<Vec<i32>>()
-            }))
+            })
+            .collect_tuple::<(Vec<i32>, Vec<i32>)>()
             .unwrap();
 
         let num_winning = have.iter().filter(|n| winning.contains(n)).count();
