@@ -17,6 +17,7 @@ const PART1: Part = |input| {
             let data = data
                 .iter()
                 .flat_map(|d| d.split(',').collect::<Vec<&str>>());
+            let data = data.map(|s| s.trim());
 
             // if any colour exceeds possible amount, return false
             !data.into_iter().any(|d| {
@@ -40,6 +41,7 @@ const PART2: Part = |input| {
             let data = data
                 .iter()
                 .flat_map(|d| d.split(',').collect::<Vec<&str>>());
+            let data = data.map(|s| s.trim());
 
             let mins = data
                 .into_iter()
