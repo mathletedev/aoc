@@ -1,3 +1,5 @@
+import birl
+import birl/duration.{Duration}
 import days/day01
 import gleam/erlang
 import gleam/int
@@ -8,15 +10,23 @@ import simplifile
 
 pub fn main() {
   let assert Ok(day) = erlang.get_line("Enter day: ")
-  let assert Ok(day) = day |> string.trim |> int.parse
+  let assert Ok(day) =
+    day
+    |> string.trim
+    |> int.parse
 
   let assert Ok(part) = erlang.get_line("Enter part: ")
-  let assert Ok(part) = part |> string.trim |> int.parse
+  let assert Ok(part) =
+    part
+    |> string.trim
+    |> int.parse
 
   let input = case
     simplifile.read(
       "../input/day"
-      <> day |> string.inspect |> string.pad_left(to: 2, with: "0")
+      <> day
+      |> string.inspect
+      |> string.pad_left(to: 2, with: "0")
       <> ".txt",
     )
   {
@@ -35,10 +45,20 @@ pub fn main() {
     _ -> panic
   }
 
-  // TODO: implement benchmarking
+  let start = birl.monotonic_now()
 
   let ans = solution(input)
 
+  let end = birl.monotonic_now()
+
   io.println("")
   io.println(ans)
+  io.println("")
+  let Duration(elapsed) = duration.milli_seconds(end - start)
+  io.println(
+    "Executed in "
+    <> elapsed
+    |> string.inspect
+    <> "ms",
+  )
 }
