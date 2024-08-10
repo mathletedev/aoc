@@ -1,6 +1,7 @@
 import birl
 import birl/duration.{MicroSecond}
 import days/day01
+import days/day04
 import gleam/erlang
 import gleam/int
 import gleam/io
@@ -36,6 +37,7 @@ pub fn main() {
 
   let solution = case day {
     1 -> day01.solution
+    4 -> day04.solution
     _ -> panic
   }
 
