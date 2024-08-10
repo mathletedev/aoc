@@ -16,7 +16,7 @@ pub fn main() {
   let input = case
     simplifile.read(
       "../input/day"
-      <> string.inspect(day) |> string.pad_left(to: 2, with: "0")
+      <> day |> string.inspect |> string.pad_left(to: 2, with: "0")
       <> ".txt",
     )
   {
