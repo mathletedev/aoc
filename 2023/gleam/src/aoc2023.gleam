@@ -39,5 +39,6 @@ pub fn main() {
 
   let ans = solution(input)
 
+  io.println("")
   io.println(ans)
 }
