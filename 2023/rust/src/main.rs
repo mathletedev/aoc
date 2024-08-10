@@ -24,7 +24,7 @@ fn main() -> Result<()> {
 
     let part = part.trim().parse::<u8>()?;
 
-    let input = match read_to_string(format!("./input/day{:02}.txt", day)) {
+    let input = match read_to_string(format!("../input/day{:02}.txt", day)) {
         Ok(input) => input,
         Err(_) => panic!("Input file not found"),
     };
