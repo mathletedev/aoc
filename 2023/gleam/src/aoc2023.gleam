@@ -1,5 +1,5 @@
 import birl
-import birl/duration.{Duration}
+import birl/duration.{MicroSecond}
 import days/day01
 import gleam/erlang
 import gleam/int
@@ -45,20 +45,16 @@ pub fn main() {
     _ -> panic
   }
 
-  let start = birl.monotonic_now()
+  let start = birl.now()
 
   let ans = solution(input)
 
-  let end = birl.monotonic_now()
+  let elapsed = birl.difference(birl.now(), start)
+  let elapsed_ms =
+    int.to_float(duration.blur_to(elapsed, MicroSecond)) /. 1000.0
 
   io.println("")
   io.println(ans)
   io.println("")
-  let Duration(elapsed) = duration.milli_seconds(end - start)
-  io.println(
-    "Executed in "
-    <> elapsed
-    |> string.inspect
-    <> "ms",
-  )
+  io.println("Executed in " <> string.inspect(elapsed_ms) <> "ms")
 }
