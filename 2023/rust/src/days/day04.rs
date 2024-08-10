@@ -6,10 +6,10 @@ const PART1: Part = |input| {
     input
         .lines()
         .map(|line| {
-            let data = line.split(": ").collect_tuple::<(_, &str)>().unwrap().1;
+            let data = line.split(':').collect_tuple::<(_, &str)>().unwrap().1;
 
             let (winning, have) = data
-                .split(" | ")
+                .split('|')
                 .map(|d| {
                     d.split(' ')
                         .filter_map(|n| match n.parse::<i32>() {
@@ -41,10 +41,10 @@ const PART2: Part = |input| {
     let mut dp = vec![1; NUM_CARDS];
 
     input.lines().enumerate().for_each(|(i, line)| {
-        let data = line.split(": ").collect_tuple::<(_, &str)>().unwrap().1;
+        let data = line.split(':').collect_tuple::<(_, &str)>().unwrap().1;
 
         let (winning, have) = data
-            .split(" | ")
+            .split('|')
             .map(|d| {
                 d.split(' ')
                     .filter_map(|n| match n.parse::<i32>() {

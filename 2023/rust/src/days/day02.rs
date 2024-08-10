@@ -12,11 +12,11 @@ const PART1: Part = |input| {
         .enumerate()
         .filter(|(_, line)| {
             // split data into individual colours
-            let data = line.split(": ").collect_tuple::<(_, &str)>().unwrap().1;
-            let data = data.split("; ").collect::<Vec<&str>>();
+            let data = line.split(':').collect_tuple::<(_, &str)>().unwrap().1;
+            let data = data.split(';').collect::<Vec<&str>>();
             let data = data
                 .iter()
-                .flat_map(|d| d.split(", ").collect::<Vec<&str>>());
+                .flat_map(|d| d.split(',').collect::<Vec<&str>>());
 
             // if any colour exceeds possible amount, return false
             !data.into_iter().any(|d| {
@@ -35,11 +35,11 @@ const PART2: Part = |input| {
     input
         .lines()
         .map(|line| {
-            let data = line.split(": ").collect_tuple::<(_, &str)>().unwrap().1;
-            let data = data.split("; ").collect::<Vec<&str>>();
+            let data = line.split(':').collect_tuple::<(_, &str)>().unwrap().1;
+            let data = data.split(';').collect::<Vec<&str>>();
             let data = data
                 .iter()
-                .flat_map(|d| d.split(", ").collect::<Vec<&str>>());
+                .flat_map(|d| d.split(',').collect::<Vec<&str>>());
 
             let mins = data
                 .into_iter()
