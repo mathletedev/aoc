@@ -18,7 +18,7 @@ const PART1: Part = |input| {
                         })
                         .collect::<Vec<i32>>()
                 })
-                .collect_tuple::<(Vec<i32>, Vec<i32>)>()
+                .collect_tuple()
                 .unwrap();
 
             // count number of winning numbers in have
@@ -53,7 +53,7 @@ const PART2: Part = |input| {
                     })
                     .collect::<Vec<i32>>()
             })
-            .collect_tuple::<(Vec<i32>, Vec<i32>)>()
+            .collect_tuple()
             .unwrap();
 
         let num_winning = have.iter().filter(|n| winning.contains(n)).count();
