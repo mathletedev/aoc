@@ -1,5 +1,6 @@
 module Main where
 
+import qualified AdventOfCode (solve)
 import System.IO
 
 padLeft :: Int -> Char -> String -> String
@@ -22,5 +23,4 @@ main =
 
     input <- readFile $ "../input/day" ++ padLeft 2 '0' (show day) ++ ".txt"
 
-    print $ day + part
-    print $ lines input
+    putStrLn $ AdventOfCode.solve day part input
