@@ -11,6 +11,6 @@ part1 =
     . map
       ( \line ->
           digitToInt (fromMaybe '0' (find isDigit line)) * 10
-            + digitToInt (fromMaybe '0' (find isDigit $ reverse line))
+            + digitToInt (fromMaybe '0' (find isDigit (reverse line)))
       )
     . lines
