@@ -19,10 +19,12 @@ common warnings
 library
     import:           warnings
     exposed-modules:  AdventOfCode,
-                      Days.Day01
+                      Days.Day01,
+                      Days.Day09
     -- other-modules:
     -- other-extensions:
-    build-depends:    base ^>=4.18.2.1
+    build-depends:    base ^>=4.18.2.1,
+                      split
     hs-source-dirs:   src
     default-language: Haskell2010
 
