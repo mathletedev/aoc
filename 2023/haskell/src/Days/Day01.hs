@@ -5,7 +5,7 @@ import Data.List
 import Data.Maybe
 
 part1 :: String -> String
-part1 input =
+part1 =
   show
     . sum
     . map
@@ -13,4 +13,4 @@ part1 input =
           digitToInt (fromMaybe '0' (find isDigit line)) * 10
             + digitToInt (fromMaybe '0' (find isDigit $ reverse line))
       )
-    $ lines input
+    . lines

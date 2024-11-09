@@ -17,8 +17,15 @@ extrapolate xs
   | otherwise = last xs + extrapolate (diff xs)
 
 part1 :: String -> String
-part1 input =
+part1 =
   show
     . sum
     . map (extrapolate . map (read :: String -> Int) . splitOn " ")
-    $ lines input
+    . lines
+
+part2 :: String -> String
+part2 =
+  show
+    . sum
+    . map (extrapolate . reverse . map (read :: String -> Int) . splitOn " ")
+    . lines
