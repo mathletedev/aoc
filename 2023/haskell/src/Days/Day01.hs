@@ -12,9 +12,5 @@ part1 :: String -> String
 part1 =
   show
     . sum
-    . fmap
-      ( \line ->
-          findDigit line * 10
-            + findDigit (reverse line)
-      )
+    . fmap (\line -> findDigit line * 10 + findDigit (reverse line))
     . lines
