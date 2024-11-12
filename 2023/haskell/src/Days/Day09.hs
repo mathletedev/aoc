@@ -2,18 +2,11 @@ module Days.Day09 where
 
 import Data.List.Split
 
--- | Calculate the difference between adjacent elements in a list
-diff :: (Num a) => [a] -> [a]
-diff [] = []
-diff (x : xs)
-  | null xs = []
-  | otherwise = (head xs - x) : diff xs
-
 -- | Extrapolate the next number in a sequence
 extrapolate :: [Int] -> Int
 extrapolate xs
   | all (== 0) xs = head xs
-  | otherwise = last xs + extrapolate (diff xs)
+  | otherwise = last xs + extrapolate (zipWith (-) (tail xs) xs)
 
 part1 :: String -> String
 part1 =
