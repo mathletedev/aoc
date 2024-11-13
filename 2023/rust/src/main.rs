@@ -36,6 +36,7 @@ fn main() -> Result<()> {
         4 => days::day04::SOLUTION,
         5 => days::day05::SOLUTION,
         6 => days::day06::SOLUTION,
+        8 => days::day08::SOLUTION,
         _ => unimplemented!(),
     };
 
