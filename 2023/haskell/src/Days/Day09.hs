@@ -12,12 +12,12 @@ part1 :: String -> String
 part1 =
   show
     . sum
-    . fmap (extrapolate . map (read :: String -> Int) . splitOn " ")
+    . fmap (extrapolate . fmap (read :: String -> Int) . splitOn " ")
     . lines
 
 part2 :: String -> String
 part2 =
   show
     . sum
-    . fmap (extrapolate . reverse . map (read :: String -> Int) . splitOn " ")
+    . fmap (extrapolate . reverse . fmap (read :: String -> Int) . splitOn " ")
     . lines
