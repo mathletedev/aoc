@@ -1,5 +1,6 @@
 pub mod days;
 pub mod solution;
+pub mod utils;
 
 use std::{
     fs::read_to_string,
@@ -37,6 +38,7 @@ fn main() -> Result<()> {
         5 => days::day05::SOLUTION,
         6 => days::day06::SOLUTION,
         8 => days::day08::SOLUTION,
+        10 => days::day10::SOLUTION,
         _ => unimplemented!(),
     };
 
