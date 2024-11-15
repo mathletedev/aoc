@@ -5,7 +5,7 @@ import Data.List.Split
 -- | Extrapolate the next number in a sequence
 extrapolate :: [Int] -> Int
 extrapolate xs
-  | all (== 0) xs = head xs
+  | all (== 0) xs = 0
   | otherwise = last xs + extrapolate (zipWith (-) (tail xs) xs)
 
 part1 :: String -> String
