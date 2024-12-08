@@ -20,6 +20,7 @@ library
     import:           warnings
     exposed-modules:  AdventOfCode,
                       Utilities,
+                      Days.Day01,
                       Days.Day02
     -- other-modules:
     -- other-extensions:
