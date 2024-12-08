@@ -32,6 +32,7 @@ fn main() -> Result<()> {
 
     let solution = match day {
         1 => days::day01::SOLUTION,
+        6 => days::day06::SOLUTION,
         _ => unimplemented!(),
     };
 
